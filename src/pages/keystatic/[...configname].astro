@@ -1,5 +1,8 @@
 ---
 import { Keystatic } from '@keystatic/astro/ui';
+
+// Astro 5.0+ 에서는 관리자 페이지가 서버에서 동작하도록 이 설정을 반드시 추가해야 합니다.
+export const prerender = false;
 ---
 
-<Keystatic client:only />
+<Keystatic client:only="react" />
