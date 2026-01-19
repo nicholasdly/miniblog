@@ -17,6 +17,8 @@
     "@astrojs/rss": "^4.0.9",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.2",
+    "@keystatic/astro": "^5.0.6",
+    "@keystatic/core": "^0.5.48",
     "astro": "^5.1.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.14",
