@@ -13,7 +13,7 @@ All blog posts should be saved as [Markdown](https://www.markdownguide.org/) or 
 title: "Customizing Miniblog"
 description: "How to customize the Miniblog blog theme."
 date: "Nov 26 2024"
-image: "/static/blog-placeholder.png"  
+image: "/static/blog-placeholder.png"
 ---
 ```
 

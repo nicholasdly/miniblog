@@ -3,7 +3,7 @@
 **Miniblog** is an opinionated and extremely minimal blogging template built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/), whose design is heavily inspired by [jrmyphlmn.com](https://jrmyphlmn.com/). Incredibly easy to use and customize, you can use **Miniblog** as is, or add as much as you want to it.
 
 - Blog post authoring using [Markdown](https://www.markdownguide.org/) and [MDX](https://mdxjs.com/) for component-style content
-- Code block syntax highlighting with [Shiki](https://github.com/shikijs/shiki) 
+- Code block syntax highlighting with [Shiki](https://github.com/shikijs/shiki)
 - [RSS](https://en.wikipedia.org/wiki/RSS) feed and sitemap generation
 - SEO optimization, with customizable OpenGraph image support
 - Code formatting with [Prettier](https://prettier.io/)
@@ -24,19 +24,19 @@ cd [YOUR_REPO_NAME]
 3. Install dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 4. Start the development server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 5. Optionally, format your code after making changes:
 
 ```bash
-npm run format
+pnpm format
 ```
 
 ## Customization
