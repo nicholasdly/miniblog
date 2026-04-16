@@ -1,19 +1,6 @@
----
-import { EMAIL } from "../consts";
-import ThemeToggle from "./ThemeToggle.astro";
----
-
-<header class="mb-6 flex items-center justify-between" transition:name="header">
-  <nav class="flex items-center gap-4">
-    <a href="/"> home </a>
-    <a href="/posts"> posts </a>
-    <a href={`mailto:${EMAIL}`}>email</a>
-  </nav>
-  <ThemeToggle />
+<header class="mb-24 leading-snug [&_p]:my-0">
+  <p>
+    <a class="font-medium no-underline" href="/">Miniblog</a>
+  </p>
+  <p class="text-muted-foreground">A minimal Astro blog template.</p>
 </header>
-
-<style>
-  a {
-    @apply font-medium text-zinc-500 hover:text-zinc-900 hover:underline dark:hover:text-zinc-100;
-  }
-</style>
