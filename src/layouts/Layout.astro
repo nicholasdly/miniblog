@@ -1,111 +1,29 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import Head from "../components/Head.astro";
+import FallbackImage from "../assets/blog-placeholder-1.jpg";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import Header from "../components/Header.astro";
-import { cn } from "../lib/utils";
-import "../styles/global.css";
 
 interface Props {
-  title: string;
-  description: string;
-  image?: string;
-  className?: string;
+  title?: string;
+  description?: string;
+  image?: ImageMetadata;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 const {
-  title,
-  description,
-  image = "/static/blog-placeholder.png",
-  className,
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  image = FallbackImage,
 } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="en">
-  <head>
-    <!-- Global Metadata -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-
-    <!-- Font preloads -->
-    <link
-      rel="preload"
-      href="/fonts/geist-variable.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/geist-mono-variable.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href={canonicalURL} />
-
-    <!-- Primary Meta Tags -->
-    <title>{title}</title>
-    <meta name="title" content={title} />
-    <meta name="description" content={description} />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.url)} />
-
-    <ViewTransitions />
-  </head>
-  <body
-    class="font-sans text-zinc-900 antialiased transition-colors dark:bg-zinc-900 dark:text-zinc-200"
-  >
-    <div class={cn("max-w-xl mx-auto p-4", className)}>
+  <Head title={title} description={description} image={image} />
+  <body>
+    <div class="mx-auto w-full max-w-2xl px-6 py-16">
       <Header />
       <slot />
     </div>
   </body>
 </html>
-
-<script is:inline>
-  const setTheme = () => {
-    let theme;
-
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      theme = localStorage.getItem("theme");
-    } else {
-      theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-    }
-
-    document.documentElement.classList[theme ? "add" : "remove"](theme);
-
-    if (typeof localStorage !== "undefined") {
-      const observer = new MutationObserver(() => {
-        const isDark = document.documentElement.classList.contains("dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-      });
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["class"],
-      });
-    }
-  };
-
-  setTheme();
-
-  document.addEventListener("astro:after-swap", setTheme);
-</script>

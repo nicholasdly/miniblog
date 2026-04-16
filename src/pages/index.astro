@@ -1,39 +1,76 @@
 ---
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import Layout from "../layouts/Layout.astro";
+import Link from "../components/Link.astro";
+import { getCollection } from "astro:content";
+
+interface Item {
+  name: string;
+  description: string;
+  url: string;
+  isExternal: boolean;
+}
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const projects: Item[] = [
+  {
+    name: "Miniblog",
+    description: "A minimal Astro blog template.",
+    url: "/",
+    isExternal: false,
+  },
+];
 ---
 
-<Layout
-  title={SITE_TITLE}
-  description={SITE_DESCRIPTION}
-  className="flex h-svh max-w-sm flex-col justify-center"
->
-  <main class="space-y-4">
+<Layout>
+  <main class="[&_p]:text-muted-foreground">
+    <h2>Today</h2>
     <p>
-      Miniblog is an opinionated and extremely minimal blogging template built
-      with <a
-        href="https://astro.build/"
-        target="_blank"
-        class="text-blue-500 underline">Astro</a
-      > and <a
-        href="https://tailwindcss.com/"
-        target="_blank"
-        class="text-blue-500 underline">Tailwind</a
-      >.
+      Miniblog is an opinionated and minimal blog template built using Astro,
+      Markdown, and Tailwind CSS.
     </p>
     <p>
-      Design heavily inspired by <a
-        href="https://jrmyphlmn.com/"
-        target="_blank"
-        class="text-blue-500 underline">jrmyphlmn.com</a
+      To learn how to use this template, check out the <Link
+        url="https://github.com/nicholasdly/miniblog">GitHub repository</Link
       >.
     </p>
+    <h2>Projects</h2>
+    <div class="flex flex-col gap-2">
+      {
+        projects.map((project) => (
+          <a
+            class="hover:bg-muted -mx-3 flex flex-col rounded-md px-3 py-2 no-underline"
+            href={project.url}
+            target={project.isExternal ? "_blank" : undefined}
+            rel={project.isExternal ? "noopener noreferrer" : undefined}
+          >
+            <span>{project.name}</span>
+            <span class="text-muted-foreground">{project.description}</span>
+          </a>
+        ))
+      }
+    </div>
+    <h2>Writing</h2>
+    <div class="flex flex-col gap-2">
+      {
+        posts.map((post) => (
+          <a
+            class="hover:bg-muted -mx-3 flex flex-col rounded-md px-3 py-2 no-underline"
+            href={`/blog/${post.id}`}
+          >
+            <span>{post.data.title}</span>
+            <span class="text-muted-foreground">{post.data.description}</span>
+          </a>
+        ))
+      }
+    </div>
+    <h2>More</h2>
     <p>
-      To use this template, check out the <a
-        href="https://github.com/nicholasdly/miniblog?tab=readme-ov-file"
-        target="_blank"
-        class="text-blue-500 underline">GitHub repository</a
-      >.
+      Miniblog is open source under the MIT license, and is heavily inspired by
+      Emil Kowalski's <Link url="https://emilkowal.ski/">personal website</Link> which
+      is built in Next.js.
     </p>
   </main>
 </Layout>

@@ -1,83 +1,159 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  @font-face {
-    font-family: "Geist";
-    src: url("/fonts/geist-variable.woff2") format("woff2");
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Geist Mono";
-    src: url("/fonts/geist-mono-variable.woff2") format("woff2");
-    font-display: swap;
-  }
-  html.dark .astro-code,
-  html.dark .astro-code span {
-    color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
-    font-style: var(--shiki-dark-font-style) !important;
-    font-weight: var(--shiki-dark-font-weight) !important;
-    text-decoration: var(--shiki-dark-text-decoration) !important;
-  }
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@layer components {
-  article {
-    p {
-      @apply my-4 leading-relaxed;
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading mt-16 mb-4 font-medium;
+  }
+  p {
+    @apply my-4;
+  }
+  :not(pre) > code {
+    @apply bg-muted rounded border px-1 py-0.5 font-mono text-sm whitespace-nowrap;
+  }
+  pre:has(code) {
+    @apply my-6 max-h-[600px] overflow-auto overscroll-none rounded-lg border p-4 font-mono text-sm;
+  }
+  img,
+  video {
+    @apply my-6 rounded-lg border;
+  }
+  hr {
+    @apply my-16;
+  }
+  blockquote {
+    @apply my-16 font-serif text-2xl;
+
+    > p > cite {
+      @apply float-right text-lg not-italic before:content-['—_'];
     }
-    h1 {
-      @apply my-4 text-xl font-medium dark:text-white;
+  }
+  a {
+    @apply underline decoration-current/50 underline-offset-2 hover:decoration-current;
+  }
+  table {
+    @apply my-8 w-full table-auto border text-sm;
+
+    th {
+      @apply border-b p-4 text-left font-medium;
     }
+    td {
+      @apply bg-muted/50 border-b p-4;
+    }
+  }
+  ol {
+    @apply my-1 list-inside list-decimal space-y-1 [&_ol]:pl-5 [&_ul]:pl-5;
+  }
+  ul {
+    @apply my-1 list-inside space-y-1 [&_ol]:pl-5 [&_ul]:pl-5 [&:not(.contains-task-list)]:list-disc;
+  }
+  li.task-list-item > input {
+    @apply mr-1;
+  }
+  kbd {
+    @apply bg-muted rounded border border-b-2 px-1 py-0.5 font-mono text-xs;
+  }
+  strong {
+    @apply font-medium;
+  }
+  mark {
+    @apply bg-yellow-200;
+  }
+  section.footnotes {
+    @apply before:bg-border text-sm before:mt-24 before:mb-4 before:block before:h-px;
+
     h2 {
-      @apply my-4 text-lg font-medium dark:text-white;
-    }
-    h3,
-    h4,
-    h5,
-    h6 {
-      @apply my-4 font-medium dark:text-white;
-    }
-    :not(pre) > code {
-      @apply whitespace-nowrap rounded border bg-zinc-200/50 px-1 py-0.5 font-mono text-sm font-medium text-black dark:border-zinc-700 dark:bg-zinc-800/50 dark:text-white;
-    }
-    pre:has(code) {
-      @apply my-4 max-h-[600px] overflow-auto rounded-lg border p-4 font-mono text-sm font-medium dark:border-zinc-700;
-    }
-    img {
-      @apply my-4 rounded-lg border dark:border-zinc-700;
-    }
-    video {
-      @apply my-4 rounded-lg border dark:border-zinc-700;
-    }
-    blockquote {
-      @apply my-4 border-l-2 pl-4;
-    }
-    a {
-      @apply text-blue-500 underline;
-    }
-    table {
-      @apply my-4 w-full table-auto border-collapse text-sm;
-      th {
-        @apply border-b p-4 text-left font-medium dark:border-zinc-700;
-      }
-      td {
-        @apply border-b bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-800;
-      }
+      @apply sr-only my-2;
     }
     ol {
-      @apply my-1 list-inside list-decimal space-y-1 [&_ol]:pl-5 [&_ul]:pl-5;
+      @apply list-none;
+
+      li {
+        @apply before:text-muted-foreground flex gap-5 [counter-increment:custom] before:content-[counter(custom)] first:[counter-reset:custom];
+      }
     }
-    ul {
-      @apply my-1 list-inside list-disc space-y-1 [&_ol]:pl-5 [&_ul]:pl-5;
+    ol > li::marker {
+      @apply text-muted-foreground;
     }
-    kbd {
-      @apply rounded border border-b-2 bg-zinc-100 px-1 py-0.5 font-mono text-xs font-medium text-black dark:border-zinc-700 dark:bg-zinc-800 dark:text-white;
+    p {
+      @apply my-0 inline;
     }
-    mark {
-      @apply dark:bg-yellow-500/50 dark:text-white;
+    a.data-footnote-backref {
+      @apply no-underline;
     }
   }
 }
