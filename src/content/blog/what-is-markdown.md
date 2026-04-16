@@ -1,19 +1,19 @@
 ---
-title: 'What is Markdown?'
-description: 'An example blog post showcasing how various Markdown elements are rendered.'
-date: 'Apr 15 2026'
-image: '../../assets/blog-placeholder-2.jpg'
+title: "What is Markdown?"
+description: "An example blog post showcasing how various Markdown elements are rendered."
+date: "Apr 15 2026"
+image: "../../assets/blog-placeholder-2.jpg"
 ---
 
 # What is Markdown?
 
-Markdown is a **lightweight markup language** created by John Gruber in 2004. It was designed with one core philosophy in mind: *a document should be readable as plain text, even before it's rendered.*
+Markdown is a **lightweight markup language** created by John Gruber in 2004. It was designed with one core philosophy in mind: _a document should be readable as plain text, even before it's rendered._
 
 Today, Markdown is used **everywhere** — from GitHub READMEs and blog posts to documentation, note-taking apps, and even chat platforms.
 
 ## Why use Markdown?
 
-**It's simple.** You don't need a rich text editor. All you need is a plain `.md` file and any text editor. The syntax is ***intuitive by design*** — wrapping a word in asterisks makes it bold, and that makes sense even without rendering.
+**It's simple.** You don't need a rich text editor. All you need is a plain `.md` file and any text editor. The syntax is **_intuitive by design_** — wrapping a word in asterisks makes it bold, and that makes sense even without rendering.
 
 **It's portable.** A Markdown file is just text. No proprietary formats, no corruption, no version incompatibility.
 
@@ -21,15 +21,15 @@ Today, Markdown is used **everywhere** — from GitHub READMEs and blog posts to
 
 ## Core Syntax
 
-| Style | Syntax | Output |
-|---|---|---|
-| Bold | `**text**` | **text** |
-| Italic | `*text*` | *text* |
-| Bold + Italic | `***text***` | ***text*** |
-| Strikethrough | `~~text~~` | ~~text~~ |
-| Highlight | `<mark>text</mark>` | <mark>text</mark> |
-| Superscript | `<sup>text</sup>` | E=mc<sup>2</sup> |
-| Subscript | `<sub>text</sub>` | H<sub>2</sub>O |
+| Style         | Syntax              | Output            |
+| ------------- | ------------------- | ----------------- |
+| Bold          | `**text**`          | **text**          |
+| Italic        | `*text*`            | _text_            |
+| Bold + Italic | `***text***`        | **_text_**        |
+| Strikethrough | `~~text~~`          | ~~text~~          |
+| Highlight     | `<mark>text</mark>` | <mark>text</mark> |
+| Superscript   | `<sup>text</sup>`   | E=mc<sup>2</sup>  |
+| Subscript     | `<sub>text</sub>`   | H<sub>2</sub>O    |
 
 Headings are prefixed with `#` symbols — one `#` for H1, two for H2, and so on.
 
@@ -43,7 +43,7 @@ For multi-line blocks, use triple backticks with an optional language identifier
 
 ```javascript
 function greet(name) {
-    return `Hello, ${name}!`;
+  return `Hello, ${name}!`;
 }
 
 console.log(greet("World")); // Hello, World!
@@ -95,16 +95,18 @@ Markdown supports unordered, ordered, and task lists:
 
 ## Extended Syntax
 
-*Standard* Markdown covers the basics, but many parsers support **extended syntax**[^2] — including tables, footnotes, task lists, and the HTML-based formatting like <mark>highlighting</mark>, superscripts like E=mc<sup>2</sup>, and subscripts like H<sub>2</sub>O.
+_Standard_ Markdown covers the basics, but many parsers support **extended syntax**[^2] — including tables, footnotes, task lists, and the HTML-based formatting like <mark>highlighting</mark>, superscripts like E=mc<sup>2</sup>, and subscripts like H<sub>2</sub>O.
 
 Support varies by parser, so always check what your platform supports before relying on extended features.
 
 ## Closing Thoughts
 
-Markdown strikes a rare balance: it's ***simple enough for anyone to learn in an afternoon***, yet powerful enough to write entire books with[^3]. Whether you're a developer documenting an API or a blogger drafting a post, Markdown is one of the most valuable plain-text tools in your kit.
+Markdown strikes a rare balance: it's **_simple enough for anyone to learn in an afternoon_**, yet powerful enough to write entire books with[^3]. Whether you're a developer documenting an API or a blogger drafting a post, Markdown is one of the most valuable plain-text tools in your kit.
 
 So open up a `.md` file and start writing — your future self will thank you.
 
-[^1]: Gruber, John. *Markdown Syntax Documentation*. Daring Fireball, 2004.
+[^1]: Gruber, John. _Markdown Syntax Documentation_. Daring Fireball, 2004.
+
 [^2]: Extended Markdown is standardized in part by the **CommonMark** spec and tools like **GFM** (GitHub Flavored Markdown).
-[^3]: The book *"The Plain Person's Guide to Plain Text Social Science"* by Kieran Healy is a real example of this.
+
+[^3]: The book _"The Plain Person's Guide to Plain Text Social Science"_ by Kieran Healy is a real example of this.

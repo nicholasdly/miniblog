@@ -1,8 +1,8 @@
 ---
-title: 'Making Miniblog'
-description: 'Describing what makes Miniblog opinionated.'
-date: 'Apr 15 2026'
-image: '../../assets/blog-placeholder-2.jpg'
+title: "Making Miniblog"
+description: "Describing what makes Miniblog opinionated."
+date: "Apr 15 2026"
+image: "../../assets/blog-placeholder-2.jpg"
 ---
 
 # Making Miniblog
@@ -18,8 +18,6 @@ To be honest, not many people care about your blog, so it doesn't need a lot of 
 I prefer to use [Tailwind CSS](https://tailwindcss.com/). It's a pleasure to work with, extremely lightweight, and its theming system is fantastic. You might have even noticed I copied some CSS variables from the popular [shadcn/ui](https://ui.shadcn.com/).
 
 I don't think you need a linter for a small application like a blog, unless there's more complexity than just rendering Markdown.
-
-I don't think you need a formatter for a blog. You're most likely going to be the only person working on it.
 
 I don't think you need analytics. You probably won't get many visitors.
 

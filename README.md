@@ -19,21 +19,24 @@
 ### Installation
 
 1. Create a new repository with this template or fork this repository.
-    - You can click the green "Use this template" button to create a new repository with this template.
-    - You can click the "Fork" button to fork this entire repository.
+   - You can click the green "Use this template" button to create a new repository with this template.
+   - You can click the "Fork" button to fork this entire repository.
 
 2. Clone this repository locally.
+
 ```zsh
 git clone https://github.com/[YOUR_USERNAME]/[YOUR_REPO_NAME].git
 cd [YOUR_REPO_NAME]
 ```
 
 3. Install dependencies.
+
 ```zsh
 pnpm install
 ```
 
 4. Start the development server.
+
 ```zsh
 pnpm dev
 ```
@@ -41,4 +44,3 @@ pnpm dev
 ## License
 
 Licensed under the [MIT License](LICENSE).
-

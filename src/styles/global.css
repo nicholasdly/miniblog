@@ -77,16 +77,16 @@
   h4,
   h5,
   h6 {
-    @apply font-heading font-medium mb-4 mt-16;
+    @apply font-heading mt-16 mb-4 font-medium;
   }
   p {
     @apply my-4;
   }
   :not(pre) > code {
-    @apply whitespace-nowrap rounded border bg-muted px-1 py-0.5 font-mono text-sm;
+    @apply bg-muted rounded border px-1 py-0.5 font-mono text-sm whitespace-nowrap;
   }
   pre:has(code) {
-    @apply my-6 max-h-[600px] overflow-auto rounded-lg border p-4 font-mono text-sm overscroll-none;
+    @apply my-6 max-h-[600px] overflow-auto overscroll-none rounded-lg border p-4 font-mono text-sm;
   }
   img,
   video {
@@ -96,36 +96,36 @@
     @apply my-16;
   }
   blockquote {
-    @apply my-16 text-2xl font-serif;
+    @apply my-16 font-serif text-2xl;
 
     > p > cite {
-      @apply before:content-['—_'] not-italic float-right text-lg;
+      @apply float-right text-lg not-italic before:content-['—_'];
     }
   }
   a {
     @apply underline decoration-current/50 underline-offset-2 hover:decoration-current;
   }
   table {
-    @apply my-8 w-full table-auto text-sm border;
+    @apply my-8 w-full table-auto border text-sm;
 
     th {
       @apply border-b p-4 text-left font-medium;
     }
     td {
-      @apply border-b bg-muted/50 p-4;
+      @apply bg-muted/50 border-b p-4;
     }
   }
   ol {
     @apply my-1 list-inside list-decimal space-y-1 [&_ol]:pl-5 [&_ul]:pl-5;
   }
   ul {
-    @apply my-1 list-inside [&:not(.contains-task-list)]:list-disc space-y-1 [&_ol]:pl-5 [&_ul]:pl-5;
+    @apply my-1 list-inside space-y-1 [&_ol]:pl-5 [&_ul]:pl-5 [&:not(.contains-task-list)]:list-disc;
   }
   li.task-list-item > input {
     @apply mr-1;
   }
   kbd {
-    @apply rounded border border-b-2 bg-muted px-1 py-0.5 font-mono text-xs;
+    @apply bg-muted rounded border border-b-2 px-1 py-0.5 font-mono text-xs;
   }
   strong {
     @apply font-medium;
@@ -134,27 +134,26 @@
     @apply bg-yellow-200;
   }
   section.footnotes {
-    @apply text-sm before:block before:bg-border before:h-px before:mt-24 before:mb-4;
+    @apply before:bg-border text-sm before:mt-24 before:mb-4 before:block before:h-px;
 
     h2 {
-      @apply my-2 sr-only;
+      @apply sr-only my-2;
     }
     ol {
       @apply list-none;
 
       li {
-        @apply [counter-increment:custom] before:content-[counter(custom)] first:[counter-reset:custom] before:text-muted-foreground flex gap-5;
+        @apply before:text-muted-foreground flex gap-5 [counter-increment:custom] before:content-[counter(custom)] first:[counter-reset:custom];
       }
     }
     ol > li::marker {
       @apply text-muted-foreground;
     }
     p {
-      @apply inline my-0;
+      @apply my-0 inline;
     }
     a.data-footnote-backref {
       @apply no-underline;
     }
   }
 }
-
