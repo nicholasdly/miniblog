@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+interface Props {
+  error: unknown;
+}
+---
+
+<Layout>
+  <main class="[&_p]:text-muted-foreground">
+    <h2>Uh oh!</h2>
+    <p>Something went wrong!</p>
+  </main>
+</Layout>
